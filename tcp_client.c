@@ -32,11 +32,20 @@ int main(int argc, char *argv[]) {
     }
     printf("Da ket noi toi server %s: %d\n", server_ip, server_port);
 
+    char welcome_buffer[1024];
+    int bytes_received = recv(client, welcome_buffer, sizeof(welcome_buffer) - 1, 0);
+    
+    if (bytes_received > 0) {
+        printf("Câu chào từ Server: %s\n", welcome_buffer);
+    }
+
     //gui du lieu
     char buf[1024];
     while(1) {
         //doc du lieu tu ban phim
-        if (fgets(buf, sizeof(buf), stdin) == NULL) {
+        printf("Enter: ");
+        fgets(buf, sizeof(buf), stdin);
+        if (strcmp(buf, "exit") == 0){
             break;
         }
         buf[strcspn(buf, "\n")] = 0; //xoa ki tu cuoi
@@ -52,6 +61,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    printf("Da dong ket noi\n");
     close(client);
 
     return 0;

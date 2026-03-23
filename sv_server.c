@@ -59,7 +59,11 @@ int main(int argc, char *argv[]) {
             strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
             //In ra man hinh
-            printf("%s %s %d %s %s %.2f\n", client_ip, time_str, sv.mssv, sv.hoten, sv.ngaySinh, sv.diemTB);
+            printf("Sinh viên: %s\n", sv.hoten);
+            printf("MSSV: %d\n", sv.mssv);
+            printf("Ngày sinh: %s\n", sv.ngaySinh);
+            printf("Điểm TB: %.2f\n", sv.diemTB);
+            //printf("%s %s %d %s %s %.2f\n", client_ip, time_str, sv.mssv, sv.hoten, sv.ngaySinh, sv.diemTB);
 
             //ghi vao file log
             FILE *f = fopen(log_file, "a");

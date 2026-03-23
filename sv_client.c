@@ -38,13 +38,23 @@ int main(int argc, char *argv[]) {
 
     while(1) {
         printf("Enter mssv: ");
-        fflush(stdin); scanf("%d", &sv.mssv);
+        scanf("%d", &sv.mssv);
+        //while (getchar() != '\n'); 
+        getchar();
+
         printf("Enter hoten: ");
-        fflush(stdin); scanf("%s", sv.hoten);
+        fgets(sv.hoten, sizeof(sv.hoten), stdin);
+        sv.hoten[strcspn(sv.hoten, "\n")] = 0;
+
         printf("Enter ngaysinh: ");
-        fflush(stdin); scanf("%s", sv.ngaySinh);
+        scanf("%s", sv.ngaySinh);
+        //while (getchar() != '\n');
+        getchar();
+
         printf("Enter diem: ");
-        fflush(stdin); scanf("%f", &sv.diemTB);
+        scanf("%f", &sv.diemTB);
+        //while (getchar() != '\n');
+        getchar();
 
         send(client, &sv, sizeof(sv), 0);
     }
